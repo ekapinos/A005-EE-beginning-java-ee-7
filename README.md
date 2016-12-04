@@ -6,9 +6,12 @@
 * Maven 3.3.9
  
 ## Setup
-1. Startup GlassFish Server: `glassfish-4.1.1\glassfish\bin\startserv.bat`
-1. Build project with `Maven`
-2. Deploy `ear` into you GlassFish Server
+1. Startup Application Server and DataBase
+  * Dig in `cd glassfish-4.1.1\glassfish\bin\`
+  * GlassFish Server: `startserv.bat`
+  * Derby Server: `asadmin start-database` (User=APP, Password=APP, DatabaseName=sun-appserv-samples)
+2. Build project with Maven. 
+3. Deploy `ear` into you GlassFish Server
 
 ## Useful links
 * [Book sale](http://www.apress.com/9781430246268?gtmf=s)

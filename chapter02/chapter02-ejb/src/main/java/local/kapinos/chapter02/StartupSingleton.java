@@ -16,7 +16,7 @@ public class StartupSingleton {
 	Logger logger = Logger.getLogger(getClass().getName());
 	
 	@Inject
-	BookService bookService;
+	AbstractBookService bookService;
 	
 	@PostConstruct
 	public void postConstruct(){

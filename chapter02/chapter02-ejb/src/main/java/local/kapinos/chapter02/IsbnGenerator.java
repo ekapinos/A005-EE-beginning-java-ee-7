@@ -2,9 +2,7 @@ package local.kapinos.chapter02;
 
 import java.util.Random;
 
-import javax.enterprise.inject.Alternative;
-
-@Alternative
+@ThirteenDigits
 public class IsbnGenerator implements NumberGenerator {
 
 	@Override

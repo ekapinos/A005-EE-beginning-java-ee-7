@@ -5,7 +5,7 @@
 
 	<!-- Enables alternatives -->
 	<alternatives>
-		<class>local.kapinos.chapter02.IsbnGenerator</class>
+		<class>local.kapinos.chapter02.LegacyBookService</class>
 	</alternatives>
 
 </beans>

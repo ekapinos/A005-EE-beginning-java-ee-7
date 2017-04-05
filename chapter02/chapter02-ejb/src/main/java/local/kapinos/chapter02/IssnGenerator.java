@@ -2,6 +2,7 @@ package local.kapinos.chapter02;
 
 import java.util.Random;
 
+@EightDigits
 public class IssnGenerator implements NumberGenerator {
 
 	@Override

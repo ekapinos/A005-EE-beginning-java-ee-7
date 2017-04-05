@@ -2,9 +2,6 @@ package local.kapinos.chapter02;
 
 import java.util.Random;
 
-import javax.enterprise.context.ApplicationScoped;
-
-@ApplicationScoped
 public class IssnGenerator implements NumberGenerator {
 
 	@Override

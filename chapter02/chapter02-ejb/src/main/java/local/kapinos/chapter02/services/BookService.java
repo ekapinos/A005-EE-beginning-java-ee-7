@@ -1,6 +1,8 @@
-package local.kapinos.chapter02;
+package local.kapinos.chapter02.services;
 
 import javax.inject.Inject;
+
+import local.kapinos.chapter02.annotations.ThirteenDigits;
 
 public class BookService extends AbstractBookService {
 

@@ -5,7 +5,7 @@
 
 	<!-- Enables alternatives -->
 	<alternatives>
-		<class>local.kapinos.chapter02.LegacyBookService</class>
+		<!--class>local.kapinos.chapter02.LegacyBookService</class-->
 	</alternatives>
 
 </beans>

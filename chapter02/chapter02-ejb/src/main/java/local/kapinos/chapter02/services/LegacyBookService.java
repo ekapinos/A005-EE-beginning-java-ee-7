@@ -1,7 +1,9 @@
-package local.kapinos.chapter02;
+package local.kapinos.chapter02.services;
 
 import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
+
+import local.kapinos.chapter02.annotations.EightDigits;
 
 @Alternative
 public class LegacyBookService extends AbstractBookService{

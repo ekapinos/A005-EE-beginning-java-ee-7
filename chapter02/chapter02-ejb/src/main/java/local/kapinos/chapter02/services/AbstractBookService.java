@@ -1,15 +1,19 @@
-package local.kapinos.chapter02;
+package local.kapinos.chapter02.services;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Inject;
+
+import modelocal.kapinos.chapter02.model.Book;
 
 public abstract class AbstractBookService {
 
-	private final Logger logger = Logger.getLogger(getClass().getName());
-
+	@Inject
+	protected Logger logger;
+	
 	private NumberGenerator numberGenerator;
 
 	AbstractBookService(NumberGenerator numberGenerator){

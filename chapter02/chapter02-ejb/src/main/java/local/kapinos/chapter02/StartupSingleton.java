@@ -29,7 +29,7 @@ public class StartupSingleton {
 	
 	@PostConstruct
 	public void postConstruct(){
-		logger.log(Level.WARNING, "postConstruct EJB");
+		logger.log(Level.WARNING, "@PostConstruct " + this.getClass().getSimpleName());
 		Book book = bookService.createBook("title", 10.0f, "descr");
 		logger.log(Level.WARNING, "Book is created " + book);		
 		logger.log(Level.WARNING, "");
@@ -39,6 +39,6 @@ public class StartupSingleton {
 	
 	@PreDestroy
 	public void postDestroy(){
-		logger.log(Level.WARNING, "postDestroy EJB");
+		logger.log(Level.WARNING, "@PreDestroy " + this.getClass().getSimpleName());
 	}	
 }

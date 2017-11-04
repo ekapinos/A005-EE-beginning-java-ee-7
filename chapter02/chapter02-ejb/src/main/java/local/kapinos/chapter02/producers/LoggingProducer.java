@@ -8,8 +8,8 @@ import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 
-// We need any bean for dispose. Otherwise next will appear in a log:
-// Severe: No valid EE environment for injection of local.kapinos.chapter02.producers.LoggingProducer
+// We need any managed bean to dispose logger. Otherwise next will appear in a log:
+// - Severe: No valid EE environment for injection of local.kapinos.chapter02.producers.LoggingProducer
 @ApplicationScoped
 public class LoggingProducer {
 

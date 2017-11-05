@@ -3,11 +3,12 @@ package local.kapinos.chapter02.model;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+@SuppressWarnings("unused") // fields are used in toString method
 public class Book {
-	String isbn;
-	String title;
-	Float price;
-	String description;
+	private String isbn;
+	private String title;
+	private Float price;
+	private String description;
 
 	public Book(String title, Float price, String description) {
 		this.title = title;
@@ -17,6 +18,10 @@ public class Book {
 	
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
+	}
+	
+	public Float getPrice() {
+		return price;
 	}
 
 	@Override

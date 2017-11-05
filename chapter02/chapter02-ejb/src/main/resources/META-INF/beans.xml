@@ -12,4 +12,9 @@
 		<!-- Only binding interceptors have to be enabled implicitly -->
 		<class>local.kapinos.chapter02.interceptor.loggingInterceptorBinding</class>
 	</interceptors>
+	
+	<decorators>
+		<!-- do not forget to enable all decorators -->
+		<class>local.kapinos.chapter02.decorator.PriceCheckerDecorator</class>
+	</decorators>
 </beans>

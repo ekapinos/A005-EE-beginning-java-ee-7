@@ -1,37 +1,38 @@
 package local.kapinos.chapter02.services;
 
-import java.util.logging.Level;
-
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptors;
 import javax.interceptor.InvocationContext;
 
 import local.kapinos.chapter02.annotations.ThirteenDigits;
-import local.kapinos.chapter02.interceptor.BookServiceInterceptor;
+import local.kapinos.chapter02.interceptor.LoggingInterceptorDirect;
+import local.kapinos.chapter02.interceptor.annotation.Loggable;
 
 /**
  * Double intercepting
  *
  */
-@Interceptors(BookServiceInterceptor.class)
+@Interceptors(LoggingInterceptorDirect.class) // Intercepter Type 1
+@Loggable                                     // Intercepter Type 2
 public class BookService extends AbstractBookService {
 
 	@Inject
 	public BookService(@ThirteenDigits NumberGenerator numberGenerator) {
 		super(numberGenerator);
 	}
-		
+	
+	// Intercepter Type 3
 	/**
-	 * @see local.kapinos.chapter02.interceptor.BookServiceInterceptor
+	 * @see local.kapinos.chapter02.interceptor.LoggingInterceptorDirect
 	 */
 	@AroundInvoke
 	private Object logMethod(InvocationContext ic) throws Exception {
-		logger.log(Level.WARNING, "@AroundInvoke-entering-inner-interceptor " + ic.getMethod().getName());
+		logger.warning(getClass().getSimpleName() +  " @AroundInvoke-entering-inner-interceptor " + ic.getMethod().getName());
 		try {
 			return ic.proceed();
 		} finally {
-			logger.log(Level.WARNING, "@AroundInvoke-exiting-inner-interceptor " + ic.getMethod().getName());
+			logger.warning(getClass().getSimpleName() +  " @AroundInvoke-exiting-inner-interceptor " + ic.getMethod().getName());
 		}
 	}
 

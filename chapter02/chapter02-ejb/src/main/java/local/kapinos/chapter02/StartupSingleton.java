@@ -11,6 +11,8 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 
 import local.kapinos.chapter02.decorator.PriceCheckerService;
+import local.kapinos.chapter02.event.AddedBook;
+import local.kapinos.chapter02.event.RemovedBook;
 import local.kapinos.chapter02.model.Book;
 import local.kapinos.chapter02.qualifier.RandomDouble;
 import local.kapinos.chapter02.services.AbstractBookService;
@@ -29,7 +31,12 @@ public class StartupSingleton {
 	PriceCheckerService priceCheckerService;
 	
 	@Inject
+	@AddedBook
 	private Event<Book> bookAddedEvent;
+	
+	@Inject
+	@RemovedBook
+	private Event<Book> bookRemovedEvent;
 	
 	@Inject
 	@RandomDouble
@@ -44,6 +51,7 @@ public class StartupSingleton {
 		priceCheckerService.checkPrice(book);
 		
 		bookAddedEvent.fire(book);
+		bookRemovedEvent.fire(book);
 		
 		logger.log(Level.WARNING, "Book is created " + book);		
 		logger.log(Level.WARNING, "");

@@ -16,11 +16,11 @@ public class PriceCheckerServiceImpl implements PriceCheckerService {
 		
 		if (book.getPrice() < 0)
 		{
-			logger.warning("Checker: Price is less than zero");
+			logger.warning("@Decorator-impl: Price is less than zero");
 		}
 		else
 		{
-			logger.warning("Checker: Price is OK");			
+			logger.warning("@Decorator-impl: Price is OK");			
 		}
 	}
 

@@ -14,8 +14,13 @@ public class InventoryService {
 	private Logger logger;
 	List<Book> inventory = new ArrayList<>();
 
-	public void addBook(@Observes Book book) {
+	public void addBook(@Observes @AddedBook Book book) {
 		logger.warning("@Observes: Adding book " + book.getTitle() + " to inventory");
+		inventory.add(book);
+	}
+	
+	public void removeBook(@Observes @RemovedBook Book book) {
+		logger.warning("@Observes: Removing book " + book.getTitle() + " to inventory");
 		inventory.add(book);
 	}
 }

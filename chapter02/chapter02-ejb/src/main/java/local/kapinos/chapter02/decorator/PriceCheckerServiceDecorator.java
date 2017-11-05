@@ -24,11 +24,11 @@ public class PriceCheckerServiceDecorator implements PriceCheckerService {
 		
 		if (book.getPrice() ==0)
 		{
-			logger.warning("Price-Checker-decorator: Price is zero");			
+			logger.warning("@Decorator-wrap: Price is zero");			
 		}
 		else
 		{
-			logger.warning("Price-Checker-decorator: Price is non zero");			
+			logger.warning("@Decorator-wrap: Price is non zero");			
 		}
 	}
 

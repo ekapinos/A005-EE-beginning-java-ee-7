@@ -9,14 +9,14 @@ import javax.inject.Inject;
 import local.kapinos.chapter02.model.Book;
 
 @Decorator
-public class PriceCheckerDecorator implements PriceChecker {
+public class PriceCheckerServiceDecorator implements PriceCheckerService {
 
 	@Inject
 	Logger logger;
 	
 	@Inject 
 	@Delegate
-	PriceChecker originalPriceChecker;
+	PriceCheckerService originalPriceChecker;
 	
 	@Override
 	public void checkPrice(Book book) {
@@ -24,11 +24,11 @@ public class PriceCheckerDecorator implements PriceChecker {
 		
 		if (book.getPrice() ==0)
 		{
-			logger.warning("Checker-decorator: Price is zero");			
+			logger.warning("Price-Checker-decorator: Price is zero");			
 		}
 		else
 		{
-			logger.warning("Checker-decorator: Price is non zero");			
+			logger.warning("Price-Checker-decorator: Price is non zero");			
 		}
 	}
 

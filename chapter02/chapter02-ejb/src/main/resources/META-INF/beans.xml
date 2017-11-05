@@ -15,6 +15,6 @@
 	
 	<decorators>
 		<!-- do not forget to enable all decorators -->
-		<class>local.kapinos.chapter02.decorator.PriceCheckerDecorator</class>
+		<class>local.kapinos.chapter02.decorator.PriceCheckerServiceDecorator</class>
 	</decorators>
 </beans>

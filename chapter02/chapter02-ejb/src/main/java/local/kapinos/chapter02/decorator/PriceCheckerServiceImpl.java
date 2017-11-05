@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import local.kapinos.chapter02.model.Book;
 
-public class PriceCheckerImpl implements PriceChecker {
+public class PriceCheckerServiceImpl implements PriceCheckerService {
 
 	@Inject
 	Logger logger;

@@ -20,6 +20,10 @@ public class Book {
 		this.isbn = isbn;
 	}
 	
+	public String getTitle() {
+		return title;
+	}
+	
 	public Float getPrice() {
 		return price;
 	}

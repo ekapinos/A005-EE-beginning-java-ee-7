@@ -3,7 +3,7 @@ package local.kapinos.chapter02.services;
 import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 
-import local.kapinos.chapter02.annotations.EightDigits;
+import local.kapinos.chapter02.qualifier.EightDigits;
 
 @Alternative
 public class LegacyBookService extends AbstractBookService{

@@ -1,4 +1,4 @@
-package modelocal.kapinos.chapter02.model;
+package local.kapinos.chapter02.model;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;

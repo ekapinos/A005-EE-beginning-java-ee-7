@@ -5,9 +5,9 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptors;
 import javax.interceptor.InvocationContext;
 
-import local.kapinos.chapter02.annotations.ThirteenDigits;
+import local.kapinos.chapter02.interceptor.Loggable;
 import local.kapinos.chapter02.interceptor.LoggingInterceptorDirect;
-import local.kapinos.chapter02.interceptor.annotation.Loggable;
+import local.kapinos.chapter02.qualifier.ThirteenDigits;
 
 /**
  * Double intercepting

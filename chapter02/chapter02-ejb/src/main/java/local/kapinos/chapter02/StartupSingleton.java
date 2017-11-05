@@ -9,9 +9,9 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.inject.Inject;
 
-import local.kapinos.chapter02.annotations.RandomDouble;
+import local.kapinos.chapter02.model.Book;
+import local.kapinos.chapter02.qualifier.RandomDouble;
 import local.kapinos.chapter02.services.AbstractBookService;
-import modelocal.kapinos.chapter02.model.Book;
 
 @Startup
 @Singleton

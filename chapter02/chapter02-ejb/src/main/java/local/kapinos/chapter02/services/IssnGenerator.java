@@ -2,7 +2,7 @@ package local.kapinos.chapter02.services;
 
 import java.util.Random;
 
-import local.kapinos.chapter02.annotations.EightDigits;
+import local.kapinos.chapter02.qualifier.EightDigits;
 
 @EightDigits
 public class IssnGenerator implements NumberGenerator {

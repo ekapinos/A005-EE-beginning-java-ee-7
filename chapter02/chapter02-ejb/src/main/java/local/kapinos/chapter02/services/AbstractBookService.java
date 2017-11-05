@@ -7,7 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
-import modelocal.kapinos.chapter02.model.Book;
+import local.kapinos.chapter02.model.Book;
 
 public abstract class AbstractBookService {
 

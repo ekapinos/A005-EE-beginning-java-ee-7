@@ -1,4 +1,4 @@
-package local.kapinos.chapter02.interceptor.annotation;
+package local.kapinos.chapter02.interceptor;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;

@@ -2,21 +2,21 @@ package local.kapinos.chapter02.interceptor;
 
 import java.util.logging.Logger;
 
+import javax.annotation.Priority;
 import javax.inject.Inject;
 import javax.interceptor.AroundConstruct;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
-import local.kapinos.chapter02.interceptor.annotation.Loggable;
-
 /**
  * "Binding" interceptors have to be enabled in beans.xml
  * 
  * @see local.kapinos.chapter02.services.AbstractBookService
  */
-@Loggable
 @Interceptor
+@Loggable
+@Priority(Interceptor.Priority.LIBRARY_BEFORE + 10)
 public class loggingInterceptorBinding {
 	@Inject
 	protected Logger logger;

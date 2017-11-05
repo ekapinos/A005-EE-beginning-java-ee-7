@@ -4,8 +4,8 @@ import java.util.Random;
 
 import javax.enterprise.inject.Produces;
 
-import local.kapinos.chapter02.annotations.RandomDouble;
-import local.kapinos.chapter02.annotations.ThirteenDigits;
+import local.kapinos.chapter02.qualifier.RandomDouble;
+import local.kapinos.chapter02.qualifier.ThirteenDigits;
 
 public class NumberProducer {
 	

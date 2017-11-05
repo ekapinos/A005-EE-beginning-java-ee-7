@@ -4,7 +4,7 @@ import java.util.Random;
 
 import javax.inject.Inject;
 
-import local.kapinos.chapter02.annotations.ThirteenDigits;
+import local.kapinos.chapter02.qualifier.ThirteenDigits;
 
 @ThirteenDigits
 public class IsbnGenerator implements NumberGenerator {

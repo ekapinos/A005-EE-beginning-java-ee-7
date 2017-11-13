@@ -5,8 +5,5 @@
         <dependent-module archiveName="chapter02-ejb-0.0.1-SNAPSHOT.jar" deploy-path="/" handle="module:/resource/chapter02-cdi-ejb/chapter02-cdi-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="commons-lang3-3.4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
     </wb-module>
 </project-modules>

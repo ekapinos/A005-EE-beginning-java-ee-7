@@ -7,56 +7,17 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
-
-import local.kapinos.chapter03.decorator.PriceCheckerService;
-import local.kapinos.chapter03.event.AddedBook;
-import local.kapinos.chapter03.event.RemovedBook;
-import local.kapinos.chapter03.model.Book;
-import local.kapinos.chapter03.qualifier.RandomDouble;
-import local.kapinos.chapter03.services.AbstractBookService;
 
 @Startup
 @Singleton
 public class StartupSingleton {
 
-	@Inject
-	Logger logger;
-	
-	@Inject
-	AbstractBookService bookService;
-	
-	@Inject
-	PriceCheckerService priceCheckerService;
-	
-	@Inject
-	@AddedBook
-	private Event<Book> bookAddedEvent;
-	
-	@Inject
-	@RemovedBook
-	private Event<Book> bookRemovedEvent;
-	
-	@Inject
-	@RandomDouble
-	double randomDouble1, randomDouble2;
+	Logger logger = Logger.getLogger(getClass().getName());
+
 	
 	@PostConstruct
 	public void postConstruct(){
 		logger.log(Level.WARNING, "@PostConstruct " + this.getClass().getSimpleName());
-		
-		Book book = bookService.createBook("title", 10.0f, "descr");
-		
-		priceCheckerService.checkPrice(book);
-		
-		bookAddedEvent.fire(book);
-		bookRemovedEvent.fire(book);
-		
-		logger.log(Level.WARNING, "Book is created " + book);		
-		logger.log(Level.WARNING, "");
-		logger.log(Level.WARNING, "randomDouble1 = " + randomDouble1);
-		logger.log(Level.WARNING, "randomDouble2 = " + randomDouble2);
 	}
 	
 	@PreDestroy

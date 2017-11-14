@@ -22,8 +22,13 @@ public @interface ZipCode {
 
 	String message() default "{local.kapinos.chapter03.constraint.ZipCode.message}";
 
-	Class<?>[] groups() default { };
+	Class<?>[] groups() default {};
 
-	Class<? extends Payload>[] payload() default { };
+	Class<? extends Payload>[] payload() default {};
 
+	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
+	@Retention(RUNTIME)
+	@interface List {
+		ZipCode[] value();
+	}
 }

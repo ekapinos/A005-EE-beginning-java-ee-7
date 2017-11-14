@@ -11,7 +11,7 @@ import local.kapinos.chapter03.constraint.Email;
 
 public class Customer {
 	@NotNull
-	@Size (min=5)
+	@Size(min=2)
 	private String firstName;
 	private String lastName;
 	@Email
@@ -21,7 +21,7 @@ public class Customer {
 	private Date dateOfBirth;
 
 	@Valid
-	private Address address;
+	private Address deliveryAddress;
 	
 	public Customer(String firstName, String lastName, String email, String phoneNumber, Date dateOfBirth, Address address) {
 		this.firstName = firstName;
@@ -29,7 +29,7 @@ public class Customer {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.dateOfBirth = dateOfBirth;
-		this.address = address;
+		this.deliveryAddress = address;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -62,10 +62,10 @@ public class Customer {
 		this.dateOfBirth = dateOfBirth;
 	}
 	public Address getAddress() {
-		return address;
+		return deliveryAddress;
 	}
 	public void setAddress(Address address) {
-		this.address = address;
+		this.deliveryAddress = address;
 	}
 	@Override
 	public String toString() {
@@ -81,7 +81,7 @@ public class Customer {
 		builder.append(", dateOfBirth=");
 		builder.append(dateOfBirth);
 		builder.append(", address=");
-		builder.append(address);
+		builder.append(deliveryAddress);
 		builder.append("]");
 		return builder.toString();
 	}

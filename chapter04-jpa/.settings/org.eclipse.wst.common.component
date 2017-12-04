@@ -3,6 +3,6 @@
         <wb-resource deploy-path="/" source-path="/ejbModule"/>
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/resources" tag="defaultRootSource"/>
-        <property name="java-output-path" value="/chapter03-bean-validation/bin"/>
+        <property name="java-output-path" value="/chapter04-jpa/bin"/>
     </wb-module>
 </project-modules>

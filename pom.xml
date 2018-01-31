@@ -86,6 +86,7 @@
 		<module>chapter02-cdi</module>
 		<module>chapter03-bean-validation</module>
 		<module>chapter04-jpa</module>
+		<module>chapter05-orm</module>
 	</modules>
 	<name>Book: Beginning Java EE 7</name>
 </project>

@@ -1,4 +1,4 @@
-package local.kapinos.chapter05.model01;
+package local.kapinos.chapter05.model01.renaming;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;

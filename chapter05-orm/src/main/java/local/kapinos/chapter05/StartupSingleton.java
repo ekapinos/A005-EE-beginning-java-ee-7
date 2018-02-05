@@ -1,7 +1,10 @@
 package local.kapinos.chapter05;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -20,6 +23,12 @@ import local.kapinos.chapter05.model03.enums_accesstype.CreditCard;
 import local.kapinos.chapter05.model03.enums_accesstype.CreditCardType;
 import local.kapinos.chapter05.model03.enums_accesstype.Track;
 import local.kapinos.chapter05.model04.basictypescollection.Book4;
+import local.kapinos.chapter05.model06.entity_relationsships.Address6;
+import local.kapinos.chapter05.model06.entity_relationsships.Artist6;
+import local.kapinos.chapter05.model06.entity_relationsships.CD6;
+import local.kapinos.chapter05.model06.entity_relationsships.Customer6;
+import local.kapinos.chapter05.model06.entity_relationsships.Order6;
+import local.kapinos.chapter05.model06.entity_relationsships.OrderLine6;
 
 @Startup	
 @Singleton
@@ -34,10 +43,13 @@ public class StartupSingleton {
 	public void postConstruct() {
 		logger.warning("Start (see log for SQL queries)");
 		
-		//runModel01();
-		//runModel02();
-		//runModel03();
+		/* *-/
+		runModel01();
+		runModel02();
+		runModel03();
 		runModel04();
+		*/
+		runModel06();
 			
 		logger.warning("End");
 	}
@@ -100,5 +112,49 @@ public class StartupSingleton {
 		tracks.put(1, "Track A");
 		tracks.put(2, "Track B");
 		em.persist(new Book4("title", 10.1f, "description", "isbn", 200, true, Arrays.asList("TagA", "tagB"), tracks));
+	}	
+	protected void runModel06()
+	{
+		logger.info("model 06");
+		
+		Address6 address = new Address6("street1", "street2", "city", "state", "zipcode", "country");
+
+		Customer6 customer = new Customer6("firstName", "lastName", "email", "phoneNumber", address);
+		em.persist(customer);
+		//em.flush(); //No : Caused by: java.lang.IllegalStateException: During synchronization a new object was found through a relationship that was not marked cascade PERSIST
+		em.persist(address);
+		
+		// You must maintain both sides of bi-directional relationships in JPA (and Java in general).
+		logger.info("address.getCustomer()=" + address.getCustomer()); // null		
+		em.flush();
+		logger.info("address.getCustomer()=" + address.getCustomer()); // null
+		em.refresh(address);
+		logger.info("address.getCustomer()=" + address.getCustomer()); // not null
+
+		em.flush();
+		
+		//@OneToMany
+		em.persist(new Order6(new Date(), 
+				              Arrays.asList(new OrderLine6("item1", 12.6, 4), new OrderLine6("item2", 12.8, 6))));
+		em.flush();
+		
+		//@ManyToMany
+		List<Artist6> createdByArtists = new ArrayList<>();
+		CD6 cd1 = new CD6("title1", 12.3f, "description1", createdByArtists);
+		CD6 cd2 = new CD6("title2", 23.4f, "description2", createdByArtists);
+		
+		List<CD6> appearsOnCDs = new ArrayList<>(); 
+		Artist6 artist1 = new Artist6("firstName", "lastName", appearsOnCDs);
+		Artist6 artist2 = new Artist6("firstName", "lastName", appearsOnCDs);
+		
+		createdByArtists.add(artist1);
+		createdByArtists.add(artist2);
+		appearsOnCDs.add(cd1);
+		appearsOnCDs.add(cd2);
+		
+		em.persist(cd1);
+		em.persist(cd2);
+		em.persist(artist1);
+		em.persist(artist2);
 	}
 }

@@ -29,6 +29,7 @@ import local.kapinos.chapter05.model06.entity_relationsships.CD6;
 import local.kapinos.chapter05.model06.entity_relationsships.Customer6;
 import local.kapinos.chapter05.model06.entity_relationsships.Order6;
 import local.kapinos.chapter05.model06.entity_relationsships.OrderLine6;
+import local.kapinos.chapter05.model07.inheritance.m07_CD;
 
 @Startup	
 @Singleton
@@ -48,8 +49,9 @@ public class StartupSingleton {
 		runModel02();
 		runModel03();
 		runModel04();
-		*/
 		runModel06();
+		*/
+		runModel07();
 			
 		logger.warning("End");
 	}
@@ -133,7 +135,7 @@ public class StartupSingleton {
 
 		em.flush();
 		
-		//@OneToMany
+		//@OneToMany with CascadeType.ALL
 		em.persist(new Order6(new Date(), 
 				              Arrays.asList(new OrderLine6("item1", 12.6, 4), new OrderLine6("item2", 12.8, 6))));
 		em.flush();
@@ -144,11 +146,14 @@ public class StartupSingleton {
 		CD6 cd2 = new CD6("title2", 23.4f, "description2", createdByArtists);
 		
 		List<CD6> appearsOnCDs = new ArrayList<>(); 
-		Artist6 artist1 = new Artist6("firstName", "lastName", appearsOnCDs);
-		Artist6 artist2 = new Artist6("firstName", "lastName", appearsOnCDs);
+		Artist6 artist1 = new Artist6("firstName", "lastName", appearsOnCDs, null);
+		Artist6 artist2 = new Artist6("firstName", "lastName", appearsOnCDs, null);
 		
-		createdByArtists.add(artist1);
-		createdByArtists.add(artist2);
+		// CD6 does not own relationship, we can load 'appearsOnCDs' only 
+		// But CD6 instances are in inconsistent state 
+		
+		//createdByArtists.add(artist1);
+		//createdByArtists.add(artist2);
 		appearsOnCDs.add(cd1);
 		appearsOnCDs.add(cd2);
 		
@@ -156,5 +161,23 @@ public class StartupSingleton {
 		em.persist(cd2);
 		em.persist(artist1);
 		em.persist(artist2);
+		
+		em.flush();
+		em.clear();
+		
+		//@Orderby ("price desc")
+		Artist6 artict2_1 = em.find(Artist6.class, artist2.getId());
+		logger.info("artict2_1=" + artict2_1.getAppearsOnCDs().get(0).getPrice()); // -> 23.4f
+		
+		artict2_1.setOrderedStrings(Arrays.asList("1.1", "1.9", "1.10"));
+		em.persist(artict2_1);
+	}
+	
+	protected void runModel07()
+	{
+		logger.info("model 07");
+		
+		// m07_CD inherit mapping information from @MappedSuperclass
+		em.persist(new m07_CD("title", 12.0f, "description", "musicCompany", 2, 30f, "genre"));
 	}
 }

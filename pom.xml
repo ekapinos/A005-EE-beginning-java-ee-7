@@ -87,6 +87,7 @@
 		<module>chapter03-bean-validation</module>
 		<module>chapter04-jpa</module>
 		<module>chapter05-orm</module>
+		<module>chapter06-managing-persistent-objects</module>
 	</modules>
 	<name>Book: Beginning Java EE 7</name>
 </project>

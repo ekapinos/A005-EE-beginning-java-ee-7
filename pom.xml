@@ -88,6 +88,7 @@
 		<module>chapter04-jpa</module>
 		<module>chapter05-orm</module>
 		<module>chapter06-managing-persistent-objects</module>
+		<module>chapter07-enterprise-javabeans</module>
 	</modules>
 	<name>Book: Beginning Java EE 7</name>
 </project>

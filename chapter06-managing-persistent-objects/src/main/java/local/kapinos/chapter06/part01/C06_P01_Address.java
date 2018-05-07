@@ -7,7 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 @EntityListeners({AddressListener.class})
-public class C07_P01_Address {
+public class C06_P01_Address {
 
 	@Id
 	@GeneratedValue
@@ -17,11 +17,11 @@ public class C07_P01_Address {
 	private String zipcode;
 	private String country;
 
-	public C07_P01_Address() {
+	public C06_P01_Address() {
 
 	}
 
-	public C07_P01_Address(String street1, String city, String zipcode, String country) {
+	public C06_P01_Address(String street1, String city, String zipcode, String country) {
 		this.street1 = street1;
 		this.city = city;
 		this.zipcode = zipcode;

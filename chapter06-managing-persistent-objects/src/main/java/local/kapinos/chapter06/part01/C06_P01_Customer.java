@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class C07_P01_Customer {
+public class C06_P01_Customer {
 
 	@Id
 	@GeneratedValue
@@ -18,13 +18,13 @@ public class C07_P01_Customer {
 	private String email;
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "address_fk")
-	private C07_P01_Address address;
+	private C06_P01_Address address;
 
-	public C07_P01_Customer() {
+	public C06_P01_Customer() {
 
 	}
 
-	public C07_P01_Customer(String firstName, String lastName, String email, C07_P01_Address address) {
+	public C06_P01_Customer(String firstName, String lastName, String email, C06_P01_Address address) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -63,11 +63,11 @@ public class C07_P01_Customer {
 		this.email = email;
 	}
 
-	public C07_P01_Address getAddress() {
+	public C06_P01_Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(C07_P01_Address address) {
+	public void setAddress(C06_P01_Address address) {
 		this.address = address;
 	}
 

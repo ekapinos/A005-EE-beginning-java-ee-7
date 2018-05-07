@@ -1,12 +1,12 @@
 package local.kapinos.chapter06.part01;
 
-public class C07_P01_CustomerDTO {
+public class C06_P01_CustomerDTO {
 
 	private String firstName;
 	private String email;
 	private String description;
 
-	public C07_P01_CustomerDTO(String firstName, String email, String description) {
+	public C06_P01_CustomerDTO(String firstName, String email, String description) {
 		this.firstName = firstName;
 		this.email = email;
 		this.description = description;

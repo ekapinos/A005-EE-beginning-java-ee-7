@@ -14,10 +14,10 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import local.kapinos.chapter06.part01.C07_P01_Address;
-import local.kapinos.chapter06.part01.C07_P01_Customer;
-import local.kapinos.chapter06.part01.C07_P01_CustomerDTO;
-import local.kapinos.chapter06.part01.C07_P01_Customer_;
+import local.kapinos.chapter06.part01.C06_P01_Address;
+import local.kapinos.chapter06.part01.C06_P01_Customer;
+import local.kapinos.chapter06.part01.C06_P01_CustomerDTO;
+import local.kapinos.chapter06.part01.C06_P01_Customer_;
 
 @Startup
 @Singleton
@@ -48,8 +48,8 @@ public class StartupSingleton {
 	protected void runPart01() {
 		logger.info("part 01 - setup");
 		
-		C07_P01_Address address = new C07_P01_Address("street1", "city", "zipcode", "country");
-		C07_P01_Customer customer = new C07_P01_Customer("firstName", "lastName", "email", address);
+		C06_P01_Address address = new C06_P01_Address("street1", "city", "zipcode", "country");
+		C06_P01_Customer customer = new C06_P01_Customer("firstName", "lastName", "email", address);
 
 		em.persist(address);
 		em.persist(customer);
@@ -59,7 +59,7 @@ public class StartupSingleton {
 		em.flush();
 		em.clear();
 
-		C07_P01_Address address1 = new C07_P01_Address("street1*", "city*", "zipcode", "country");
+		C06_P01_Address address1 = new C06_P01_Address("street1*", "city*", "zipcode", "country");
 		address1.setId(address.getId());
 		// em.refresh(address1); Cannot refresh unmanaged object
 		em.merge(address1); // UPDATE
@@ -77,7 +77,7 @@ public class StartupSingleton {
 				+ "c.lastName, "
 				+ "c.email, "
 				+ "CASE WHEN c.id > 1 THEN 'ID greater than 1' ELSE 'ID is less then 2' END " + 
-		        "FROM C07_P01_Customer c " + 
+		        "FROM C06_P01_Customer c " + 
 			    "WHERE c.firstName='firstName'");
 		List<?> resultList = query.getResultList();
 		for (Object row : resultList) {
@@ -90,27 +90,27 @@ public class StartupSingleton {
 		}
 		
 		// Fetch via DTO (not @Entity)
-		TypedQuery<C07_P01_CustomerDTO> query1 = em.createQuery(
-				"SELECT NEW local.kapinos.chapter06.part01.C07_P01_CustomerDTO( "
+		TypedQuery<C06_P01_CustomerDTO> query1 = em.createQuery(
+				"SELECT NEW local.kapinos.chapter06.part01.C06_P01_CustomerDTO( "
 				+ "c.lastName, "
 				+ "c.email, "
 				+ "CASE WHEN c.id > 1 THEN 'ID greater than 1' ELSE 'ID is less then 2' END "
 				+ ") " + 
-		        "FROM C07_P01_Customer c " + 
-			    "WHERE c.firstName='firstName'", C07_P01_CustomerDTO.class);
+		        "FROM C06_P01_Customer c " + 
+			    "WHERE c.firstName='firstName'", C06_P01_CustomerDTO.class);
 		
 		logger.info(query1.getResultList().toString());
 		
-		em.createQuery("SELECT c FROM C07_P01_Customer c WHERE c.address.zipcode IN ('a', 'b')").getResultList();
+		em.createQuery("SELECT c FROM C06_P01_Customer c WHERE c.address.zipcode IN ('a', 'b')").getResultList();
 	}
 
 	protected void runPart03() {
 		logger.info("part 03 - bulk update/delete");
 		
-		C07_P01_Customer customer = em.find(C07_P01_Customer.class, customerId);
+		C06_P01_Customer customer = em.find(C06_P01_Customer.class, customerId);
 		logger.info(customer.toString());
 		
-		em.createQuery("UPDATE C07_P01_Customer c SET c.lastName='lastname*' ").executeUpdate();
+		em.createQuery("UPDATE C06_P01_Customer c SET c.lastName='lastname*' ").executeUpdate();
 		logger.info(customer.getLastName()); // -> "lastName"
 		em.refresh(customer);
 		logger.info(customer.getLastName()); // -> "lastName*"
@@ -120,9 +120,9 @@ public class StartupSingleton {
 		logger.info("part 04 - Criteria API with Metamodel");
 		
 		CriteriaBuilder builder = em.getCriteriaBuilder();
-		CriteriaQuery<C07_P01_Customer> criteriaQuery = builder.createQuery(C07_P01_Customer.class);
-		Root<C07_P01_Customer> c = criteriaQuery.from(C07_P01_Customer.class);
-		criteriaQuery.select(c).where(builder.equal(c.get(C07_P01_Customer_.firstName), "Vincent"));
+		CriteriaQuery<C06_P01_Customer> criteriaQuery = builder.createQuery(C06_P01_Customer.class);
+		Root<C06_P01_Customer> c = criteriaQuery.from(C06_P01_Customer.class);
+		criteriaQuery.select(c).where(builder.equal(c.get(C06_P01_Customer_.firstName), "Vincent"));
 		em.createQuery(criteriaQuery).getResultList();		
 	}
 
@@ -141,7 +141,7 @@ public class StartupSingleton {
 	protected void runPart07() {
 		logger.info("part 07 - callbacks");
 		
-		C07_P01_Address address = em.find(C07_P01_Address.class, addressId);
+		C06_P01_Address address = em.find(C06_P01_Address.class, addressId);
 
 		address.setCountry(address.getCountry() + "*");
 	}

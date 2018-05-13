@@ -29,7 +29,7 @@
 				<li><a href="./rest/singleton/stateful">@SessionScoped -@Stateful</a> same as @WebServlet-@SessionScoped-@Stateful
 			</ul>
 		</ul>
-		
+		<li><a href="./webservlet-async">@ApplicationScoped-@Stateful-@Asynchronous</a>
 	</ul>
 </body>
 </html>

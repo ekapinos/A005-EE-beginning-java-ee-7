@@ -9,16 +9,27 @@
 	<h1>Web-EJB demo</h1>
 	<h3>(be aware of 3 sec delay for load testing)</h3>
 	<ul>
-		<li>Servlet - same controller on each call,
+		<li>@WebServlet - same instance on each call
 		<ul>
-			<li><a href="./servlet/stateless">servlet/stateless</a> same ejb on low load, new ejb on load
-			<li><a href="./servlet/stateful">servlet/stateful</a> same ejb always with sequential execution on load
+			<li><a href="./webservlet/stateless">@Stateless</a> same ejb on low load, new ejb on load
+			<li><a href="./webservlet/stateful">@Stateful</a> same ejb always with sequential execution on load
+			<li><a href="./webservlet-sessionscoped/stateless">@SessionScoped-@Stateless</a> same as @Stateless
+			<li><a href="./webservlet-sessionscoped/stateful">@SessionScoped-@Stateful</a> same ejb for each HTTP session
 		</ul>
-		<li>Rest - new controller on each call
+		<li>@ApplicationPath("/rest") + @Path - new instance on each call
 		<ul>
-			<li><a href="./rest/stateless">rest/stateless</a> same ejb on low load, new ejb on load
-			<li><a href="./rest/stateful">rest/stateful</a> new ejb on each call
+		    <li>@RequestScoped via getClasses - new instance on each call
+		    <ul>
+				<li><a href="./rest/stateless">@Stateless</a> same ejb on low load, new ejb on load
+				<li><a href="./rest/stateful">@Stateful</a> new ejb on each call
+			</ul>
+		    <li>@ApplicationScoped via getSingletons - single instance
+		    <ul>
+				<li><a href="./rest/singleton/stateless">@SessionScoped-@Stateless</a> same as @WebServlet-@SessionScoped-@Stateless
+				<li><a href="./rest/singleton/stateful">@SessionScoped -@Stateful</a> same as @WebServlet-@SessionScoped-@Stateful
+			</ul>
 		</ul>
+		
 	</ul>
 </body>
 </html>

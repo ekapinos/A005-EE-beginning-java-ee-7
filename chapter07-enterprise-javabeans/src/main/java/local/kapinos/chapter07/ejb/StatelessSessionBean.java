@@ -25,11 +25,11 @@ public class StatelessSessionBean {
 	
 	@PostConstruct
 	public void postConstruct() {
-		logger.warning("@PostConstruct for " + this);
+		logger.info("@PostConstruct for " + this);
 	}
 
 	public String callBean() {
-		logger.info("callBean() for " + this);
+		logger.info("Call for " + this);
 		//logger.info(" isJoinedToTransaction="+em.isJoinedToTransaction()); //true
 		C07_Test test = em.find(C07_Test.class, 1);
 		String value= null;

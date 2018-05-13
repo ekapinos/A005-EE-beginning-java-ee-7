@@ -14,7 +14,7 @@ public class StartupSingleton {
 
 	@PostConstruct
 	public void postConstruct() {
-		logger.warning("@PostConstruct for " + this);
+		logger.info("@PostConstruct for " + this);
 	}
 
 }

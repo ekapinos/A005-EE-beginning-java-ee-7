@@ -11,38 +11,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import local.kapinos.chapter07.ejb.StatefulSessionBean;
-import local.kapinos.chapter07.ejb.StatelessSessionBean;
+import local.kapinos.chapter07.cdi.SessionScopeCdiBean;
 
-@WebServlet(urlPatterns = "/webservlet/*")
+@WebServlet(urlPatterns = "/webservlet-sessionscoped/*")
 @SuppressWarnings("serial")
-public class ServletController extends HttpServlet {
+public class ServletWithSessionScopedCdiController extends HttpServlet {
 
 	Logger logger = Logger.getLogger(getClass().getName());
 
 	@Inject
-	StatelessSessionBean statelessSessionBean;
-
-	@Inject
-	StatefulSessionBean statefulSessionBean;
+	SessionScopeCdiBean sessionScopedCdiBean;
 
 	@PostConstruct
 	public void postConstruct() {
-		logger.info("@PostConstruct for " + this); 
+		logger.info("@PostConstruct for " + this);
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		logger.info("Call for " + this);
 		resp.getWriter().append("See log " + this);
-		
-		if(req.getRequestURI().endsWith("/stateless"))
-		{
-			statelessSessionBean.callBean();
-		}
-		if(req.getRequestURI().endsWith("/stateful"))
-		{
-			statefulSessionBean.callBean();
-		}
+
+		sessionScopedCdiBean.callBean(
+				req.getRequestURI().endsWith("/stateless"),
+				req.getRequestURI().endsWith("/stateful"));
 	}
 }

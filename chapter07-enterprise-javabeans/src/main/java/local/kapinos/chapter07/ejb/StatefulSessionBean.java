@@ -17,11 +17,11 @@ public class StatefulSessionBean {
 	
 	@PostConstruct
 	public void postConstruct() {
-		logger.warning("@PostConstruct for " + this);
+		logger.info("@PostConstruct for " + this);
 	}
 
 	public String callBean() {
-		logger.info("callBean() for " + this);
+		logger.info("Call for " + this);
 		logger.info(" caller="+sessionContext.getCallerPrincipal());
 
 		try {

@@ -24,14 +24,14 @@ public class RestController {
 
 	@PostConstruct
 	public void postConstruct() {
-		logger.warning("@PostConstruct for " + this); // new instance on each request
+		logger.info("@PostConstruct for " + this); // new instance on each request
 	}
 	
 	@GET
 	@Produces("text/html")
 	@Path("/stateless")
 	public String callStateless() {
-		logger.info("callStateless() for " + this);
+		logger.info("Call for " + this);
 		
 		return statelessSessionBean.callBean();
 	}
@@ -40,9 +40,9 @@ public class RestController {
 	@Produces("text/html")
 	@Path("/stateful")
 	public String callStateful() {
-		logger.info("callStateful() for " + this);
+		logger.info("Call for " + this);
 		
 		return statefulSessionBean.callBean();
-	}
+	}	
 }
 

@@ -26,10 +26,11 @@
 		    <li>@ApplicationScoped via getSingletons - single instance
 		    <ul>
 				<li><a href="./rest/singleton/stateless">@SessionScoped-@Stateless</a> same as @WebServlet-@SessionScoped-@Stateless
-				<li><a href="./rest/singleton/stateful">@SessionScoped -@Stateful</a> same as @WebServlet-@SessionScoped-@Stateful
+				<li><a href="./rest/singleton/stateful">@SessionScoped-@Stateful</a> same as @WebServlet-@SessionScoped-@Stateful
 			</ul>
 		</ul>
-		<li><a href="./webservlet-async">@ApplicationScoped-@Stateful-@Asynchronous</a>
+		<li><a href="./webservlet-async">@ApplicationScoped-@Stateful-@Asynchronous</a> works Ok in WAR file
+		<li><a href="./webservlet-chain">@ApplicationScoped-@Stateless-@Stateless-@Stateful</a> new @Stateful on load (@Stateless client instantiated). No proxy. Bad practice
 	</ul>
 </body>
 </html>

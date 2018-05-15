@@ -29,8 +29,10 @@
 				<li><a href="./rest/singleton/stateful">@SessionScoped-@Stateful</a> same as @WebServlet-@SessionScoped-@Stateful
 			</ul>
 		</ul>
-		<li><a href="./webservlet-async">@ApplicationScoped-@Stateful-@Asynchronous</a> works Ok in WAR file
-		<li><a href="./webservlet-chain">@ApplicationScoped-@Stateless-@Stateless-@Stateful</a> new @Stateful on load (@Stateless client instantiated). No proxy. Bad practice
+		<li><a href="./webservlet-async">@WebServlet-@Stateful-@Asynchronous</a> works Ok in WAR file
+		<li><a href="./webservlet-chain">@WebServlet-@Stateless-@Stateless-@Stateful</a> new @Stateful on load (@Stateless client instantiated). No proxy. Bad practice
+		<li><a href="./webservlet-cdi-chain">@WebServlet-@RequestScoped-@ApplicationScoped-@SessionScoped</a> @SessionScoped is bound to HTTP session
+		
 	</ul>
 </body>
 </html>

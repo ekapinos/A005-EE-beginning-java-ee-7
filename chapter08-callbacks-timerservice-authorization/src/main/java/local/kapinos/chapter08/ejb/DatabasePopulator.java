@@ -19,8 +19,10 @@ import local.kapinos.chapter08.model.Book;
 		databaseName = "chapter08DB", 
 		properties = {"connectionAttributes=;create=true" })
 public class DatabasePopulator {
+
 	@Inject
 	private BookEJB bookEJB;
+	
 	private Book h2g2;
 	private Book lord;
 

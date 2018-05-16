@@ -7,13 +7,13 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.validation.constraints.NotNull;
 
 import local.kapinos.chapter08.model.Book;
 
 @Stateless
 @LocalBean
 public class BookEJB implements BookEJBRemote {
+
 	@Inject
 	private EntityManager em;
 
@@ -22,12 +22,12 @@ public class BookEJB implements BookEJBRemote {
 		return query.getResultList();
 	}
 
-	public Book createBook(@NotNull Book book) {
+	public Book createBook(Book book) {
 		em.persist(book);
 		return book;
 	}
 
-	public Book updateBook(@NotNull Book book) {
+	public Book updateBook(Book book) {
 		return em.merge(book);
 	}
 

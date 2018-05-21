@@ -90,6 +90,7 @@
 		<module>chapter06-managing-persistent-objects</module>
 		<module>chapter07-enterprise-javabeans</module>
 		<module>chapter08-callbacks-timerservice-authorization</module>
+		<module>chapter09-transactions</module>
 	</modules>
 	<name>Book: Beginning Java EE 7</name>
 </project>

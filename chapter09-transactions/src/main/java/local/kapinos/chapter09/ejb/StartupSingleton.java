@@ -55,7 +55,7 @@ public class StartupSingleton {
 		}
 		catch (RuntimeException e)
 		{
-			// Do nothing
+			logger.info(e.getMessage());
 		}
 		books = bookCDI.findBooks();
 		logger.info("CDI findBooks=" + books.toString()); //Book #1 and #3

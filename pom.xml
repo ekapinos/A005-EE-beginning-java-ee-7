@@ -91,6 +91,8 @@
 		<module>chapter07-enterprise-javabeans</module>
 		<module>chapter08-callbacks-timerservice-authorization</module>
 		<module>chapter09-transactions</module>
+		<module>chapter12-xml-and-json</module>
+		<module>chapter13-messaging</module>
 	</modules>
 	<name>Book: Beginning Java EE 7</name>
 </project>

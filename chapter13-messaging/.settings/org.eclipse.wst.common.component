@@ -2,7 +2,9 @@
     <wb-module deploy-name="chapter13-messaging-0.0.1-SNAPSHOT">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <property name="java-output-path" value="/chapter12-xml-and-json/target/classes"/>
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <property name="context-root" value="chapter13-messaging"/>
+        <property name="java-output-path" value="/chapter13-messaging/target/classes"/>
     </wb-module>
 </project-modules>

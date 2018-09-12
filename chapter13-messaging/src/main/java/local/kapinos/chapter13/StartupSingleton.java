@@ -19,10 +19,13 @@ import javax.jms.JMSDestinationDefinitions;
 		@JMSDestinationDefinition(
 				name = StartupSingleton.QUEUE_JNDI_NAME, 
 				interfaceName = "javax.jms.Queue",
-				destinationName = "myQueue"),
+				destinationName = "exampleTopic" // Need to be set for GlassFish
+				),
 		@JMSDestinationDefinition(
 				name = StartupSingleton.TOPIC_JNDI_NAME, 
-				interfaceName = "javax.jms.Topic") })
+				interfaceName = "javax.jms.Topic",
+				destinationName = "exampleTopic" // Need to be set for GlassFish
+				) })
 
 @Singleton
 @Startup

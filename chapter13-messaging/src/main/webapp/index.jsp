@@ -8,9 +8,12 @@
 </head>
 <body>
 	<h1>Chapter 13 - Messaging</h1>
-	Messages count sent/receive <c:out value="${messageCounterCdiBean.sentMessagesCount}" />/
-	<c:out value="${messageCounterCdiBean.receivedMessagesCount}" />
-	<br />
-	<a href="./produce">Produce Message</a>
+	Messages count
+	<br/>
+	Queue sent: <c:out value="${counter.sentMessagesCountQueue}" />, received:<c:out value="${counter.receivedMessagesCountQueue}" />
+	<a href="./produce/queue">Produce Queue Message</a>
+	<br/>
+	Topic sent: <c:out value="${counter.sentMessagesCountTopic}" />, received:<c:out value="${counter.receivedMessagesCountTopic}" />
+	<a href="./produce/topic">Produce Topic Message</a>
 </body>
 </html>

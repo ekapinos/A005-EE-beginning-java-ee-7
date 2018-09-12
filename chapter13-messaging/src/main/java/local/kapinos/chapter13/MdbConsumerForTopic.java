@@ -12,16 +12,17 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 
 @MessageDriven(
-		mappedName = StartupSingleton.QUEUE_JNDI_NAME, 
+		mappedName = StartupSingleton.TOPIC_JNDI_NAME, 
 		activationConfig = {
-		  //@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge"),
-		    @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue") } )// Important for GlassFish
-public class ConsumerMdb implements MessageListener {
+		    @ActivationConfigProperty(
+		    		propertyName = "destinationType", 
+		    		propertyValue = "javax.jms.Topic") } )// Important for GlassFish
+public class MdbConsumerForTopic implements MessageListener {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
 
 	@Inject
-	private CounterCdiBean cdiBean;
+	private CdiBeanCounter cdiBean;
 	
 	@PostConstruct
 	public void postConstruct() {
@@ -38,7 +39,7 @@ public class ConsumerMdb implements MessageListener {
 		logger.info("Call " + this);
 		try {
 			logger.info("Consumed '" + message.getBody(String.class) + "'");
-			cdiBean.incrementReceivedMessagesCount();
+			cdiBean.incrementReceivedMessagesCountQueue();
 		} catch (JMSException e) {
 
 			e.printStackTrace();

@@ -1,8 +1,8 @@
 # Java EE - Beginning Java EE 7 - book study
 
 ## Environment:
-* JDK 1.8.0_91
-* GlassFish Server 4.1.1
+* JDK build 1.8.0_91-b14
+* GlassFish Server Open Source Edition 4.1.2 (build 1).
 * Maven 3.3.9
  
 ## Setup
